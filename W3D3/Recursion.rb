@@ -80,3 +80,29 @@ def itr_fibonacci(n)
     end
     output
 end
+
+def bsearch(arr, target)
+ #base case: 
+ return nil if arr.empty?
+
+ mid = arr.length / 2
+ if arr[mid] == target
+    return mid
+ elsif arr[mid] < target #scenario where target item is greater
+    #ex: [1,2,3,4]
+   s = bsearch(arr[(mid + 1)..-1], target)
+    if s == nil
+            return nil
+    else
+        s + mid + 1 #s = 0 [1, 2, 3, 4] => [4] (s = 0) => mid = 2 => +1
+    end
+ else
+    bsearch(arr[0...mid], target)
+ end
+
+end
+#[1,2,3,4,5] target = 10
+# [4,5]
+# [5]
+#[]
+
