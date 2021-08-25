@@ -132,5 +132,9 @@ def merge(arr1, arr2)
     end
 result
 end
-
-
+def subsets(arr)
+    result = []
+    if arr.length == []
+        return []
+    end
+end
