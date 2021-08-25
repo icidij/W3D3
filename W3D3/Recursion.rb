@@ -59,3 +59,24 @@ return output
 end
 end
 
+def rec_fibonacci(n)
+    return [1] if n == 1
+    return [1, 1] if n == 2 
+    last_sequence = fibonacci(n-1)
+    last_sequence << last_sequence[-1] + last_sequence[-2]
+end
+
+def itr_fibonacci(n)
+    output = [1, 1]
+    if n == 1
+        return [1]
+    elsif n == 2
+        return [1, 1]
+    else
+        (n-2).times do 
+            sum = output[-1] + output[-2]
+            output << sum
+        end
+    end
+    output
+end
