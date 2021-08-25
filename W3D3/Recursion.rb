@@ -104,11 +104,13 @@ end
 require "byebug"
 def merge_sort(arr)
     return arr if arr.length == 1
+    
     first_half = arr[0...(arr.length/2)]
     second_half = arr[(arr.length/2)..-1]
+
     first_sort = merge_sort(first_half)
-    debugger
     second_sort = merge_sort(second_half)
+
     merge(first_sort, second_sort)
 end
 
