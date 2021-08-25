@@ -92,17 +92,40 @@ def bsearch(arr, target)
     #ex: [1,2,3,4]
    s = bsearch(arr[(mid + 1)..-1], target)
     if s == nil
-            return nil
+        return nil
     else
-        s + mid + 1 #s = 0 [1, 2, 3, 4] => [4] (s = 0) => mid = 2 => +1
+        return s + mid + 1 #s = 0 [1, 2, 3, 4] => [4] (s = 0) => mid = 2 => +1
     end
  else
     bsearch(arr[0...mid], target)
  end
+end
+
+def merge_sort(arr)
+    return arr if arr.length == 1
+    first_half = arr[0...(arr.length/2)]
+    second_half = arr[(arr.length/2)..-1]
+    merge_sort(first_half)
+    merge_sort(second_half)
+
+    merge(first_half, second_half)
 
 end
-#[1,2,3,4,5] target = 10
-# [4,5]
-# [5]
-#[]
+
+require "byebug"
+def merge(arr1, arr2) # arr1 = [1,2] arr2 = [3, 4]
+    result = []
+
+    until arr1.empty? && arr2.empty?
+        arr1.each do |el1|
+            arr2.each do |el2|
+                if el1 < el2
+                    result << arr1.shift
+                else
+                    result << arr2.shift
+                end
+            end
+    result
+end
+
 
