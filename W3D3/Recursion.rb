@@ -41,5 +41,21 @@ end
     #         16
     #         exp(4, 1) ** 2 => 16
     #             4
+class Array
 
-    
+def dup
+    output = []
+
+    self.each do |el|
+        if el.is_a?(Array)
+            output << el.dup
+        else
+            output << el
+        end
+        
+    end
+return output
+
+end
+end
+
