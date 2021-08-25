@@ -101,31 +101,34 @@ def bsearch(arr, target)
  end
 end
 
+require "byebug"
 def merge_sort(arr)
     return arr if arr.length == 1
     first_half = arr[0...(arr.length/2)]
     second_half = arr[(arr.length/2)..-1]
-    merge_sort(first_half)
-    merge_sort(second_half)
-
-    merge(first_half, second_half)
-
+    first_sort = merge_sort(first_half)
+    debugger
+    second_sort = merge_sort(second_half)
+    merge(first_sort, second_sort)
 end
 
-require "byebug"
-def merge(arr1, arr2) # arr1 = [1,2] arr2 = [3, 4]
+def merge(arr1, arr2)
     result = []
 
-    until arr1.empty? && arr2.empty?
-        arr1.each do |el1|
-            arr2.each do |el2|
-                if el1 < el2
-                    result << arr1.shift
-                else
-                    result << arr2.shift
-                end
-            end
-    result
+    until arr1.empty? || arr2.empty?
+        if arr1[0] < arr2[0]
+            result << arr1.shift
+        else
+            result << arr2.shift
+        end
+    end
+
+    if !arr1.empty?
+        arr1.each {|ele| result << ele}
+    elsif !arr2.empty?
+        arr2.each {|ele| result << ele}
+    end
+result
 end
 
 
